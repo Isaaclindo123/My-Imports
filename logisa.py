@@ -4,7 +4,7 @@ lazy import os
 
 __all__ = ["isalog", "isalimp"]
 
-print("(Log Isa 1.1.4) Hello!!! From Two Points Ltda Community!!! See my github to more: https://github.com/Isaaclindo123. (This message is inspired in the pygame (:. )")
+print("(Log Isa 1.1.5) Hello!!! From Two Points Ltda Community!!! See my github to more: https://github.com/Isaaclindo123. (This message is inspired in the pygame (:. )")
 
 def isalog(archivename, level):
     """
@@ -37,9 +37,9 @@ def isalog(archivename, level):
         filename=archivename,
         filemode='a',
         level=level,
-        format='%(asctime)s - %(levelname)s - %(message)s'
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        force=True
     )
-    print(f"Configured to archive {archivename}, good luck (;!!!!")
     return True
 
 def isalimp(archivename):
