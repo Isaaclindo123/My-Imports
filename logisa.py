@@ -54,6 +54,7 @@ def isalimp(archivename):
     except FileNotFoundError:
         print(f"IsaImpWarn TBMRCL: [ISALIMP code:4] Oops, the archive {archivename} is already clearned, try to write new logs with this archive!!!")
         return True
+        
 def test():
     dfi =  r"C:\Users\Test"
     acm = os.path.join(dfi, "test.log")
