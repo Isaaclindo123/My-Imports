@@ -1,15 +1,20 @@
-# Hello!!! From Two Poins Ltda community!!!
-This is a import from python
+# Hello!!!
+That is my imports in python
 
-# How to import this??
-write: from logisa import isalog, isalimp
-or: import logisa
+# What are the imports and how you should use
+These are the imports and how you should use :
+| Import | How to use |
+| ------ | ---------- |
+| Log Isa | Used to create logs, to use, use the functions isalog(archivename, logging.LEVEL) to edit logs and isalimp(archivename) to clean logs |
 
-# How to import from all locals im my computer
-Just add it to this diretory: C:\Users\%USER%\AppData\Local\Programs\Python\Python315\Lib
+# How to import this
+To import you use the import of python and the import
 
-# Pre-Requisits
-Python 3.15, because this use the "lazy" that import the imports with more velocity
+```python
+# example
+import isalog
 
-# And is that!!!!
-:)))))))
+```
+
+# And is that
+To more explication, go to wiki
