@@ -16,5 +16,5 @@ import isalog
 
 ```
 
-# And is that
+# And is that!!!
 To more explication, go to wiki
