@@ -7,10 +7,6 @@ __all__ = ["isalog", "isalimp"]
 print("(Log Isa 1.1.5) Hello!!! From Two Points Ltda Community!!! See my github to more: https://github.com/Isaaclindo123. (This message is inspired in the pygame (:. )")
 
 def isalog(archivename, level):
-    """
-    Função chamada pelo arquivo principal para definir o nome do arquivo
-    e o nível do log. Se nome_arquivo for vazio ou None, exibe o erro.
-    """
     if not archivename:
         print("IsaImpError: TBMRCL: [ISALOG code: 1] Oops, you don't defined the archive name!!! Try 'logisa.isalog(ARCHIVENAME, logging.LEVEL)' to run correctly (example: twopoints.log)")
         return False
