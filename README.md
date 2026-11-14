@@ -25,4 +25,4 @@ from isau import *
 ```
 
 # And is that!!!
-To more explication, go to wiki (the wiki of isau will be released tomorrow!!!!)
+To more explication, go to wiki
