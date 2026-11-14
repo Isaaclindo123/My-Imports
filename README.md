@@ -6,7 +6,7 @@ These are the imports and how you should use :
 | Import | How to use |
 | ------ | ---------- |
 | Log Isa | Used to create logs, to use, use the functions isalog(archivename, logging.LEVEL) to edit logs and isalimp(archivename) to clean logs |
-| Isa Utilities | Used to program in almost any programming language, using more than 20 functions |
+| Isa Utilities | Used to program in almost any programming language, having more than 20 functions |
 
 # How to import this
 To import ISALOG you use the import `logisa` and the import `logging` (in logisa)
