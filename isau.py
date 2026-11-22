@@ -1,5 +1,5 @@
 """
-# Isa Utilities (or isau) [2.0]
+# Isa Utilities (or isau) [2.0.1]
 
 The Isa Utilities is a import for the python that does you create codes in any language that you want (almost languages):
 
@@ -38,7 +38,7 @@ Run 'cls' in batch & cmd causes a gliched charcher, don't try this command!!!!!
 To know more, visit the wiki, and I explain each function
 """
 
-# IsaUtilities (or isau) [2.0]
+# IsaUtilities (or isau) [2.0.1]
 # Lazy Imports (modules)
 __lazy_modules__ = ["sys", "colorama", "shutil", "os", "subprocess" "tempfile", "webbrownser", "pandas", "sqlalchemy", "pyodbc", "re", "urlib.parse"]
 
@@ -68,7 +68,7 @@ __all__ = ["colorinicialize", "terminaltitle", "sqlsender", "sqlconnectunencrypt
 
 # Hello
 if __name__ == "__main__":
-    print("Hello form Two Points Community!!! IsaUtilities [2.0] (FIX PRINT 2) imported (obs: no run the colorinitialize() & react(appname, appcode) in module (F5))")
+    print("Hello form Two Points Community!!! IsaUtilities [2.0.1] (FIX BUGS 1) imported (obs: no run the colorinitialize() & react(appname, appcode) in module (F5))")
 
 # Global variables
 _cfgconnect = None
