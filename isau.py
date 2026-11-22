@@ -1,20 +1,19 @@
 """
-# Isa Utilities (or isau)
+# Isa Utilities (or isau) [2.0]
 
 The Isa Utilities is a import for the python that does you create codes in any language that you want (almost languages):
 
 The languages are:
-
-1. Batch
-2. VBS (Visual Basic Script)
+1. Command Line & Batch (Batch requires windows)
+2. VBS (Visual Basic Script) (Requires Windows)
 3. SQL
 4. C (Using MYSYS2 compiler)
 5. C++ (Using MYSYS2 compiler)
 6. C# (Uning dotnet)
-7. Java Script (Node JS)
+7. Java Script (Node JS & WSH (Wsh requires Windows))
 8. React (Creates the project, you edit the code in the python folder)
 9. CSS (to integrate in HTML Script)
-10. Html
+10. Html & Hta (Hta requires Windows)
 11. Type Script
 12. Ruby
 13. Rust
@@ -32,11 +31,14 @@ And there was a 2 functions that I had forgotten:
 - Terminal Title
 - Color Initialize
 
+# Warning
+Run 'cls' in batch & cmd causes a gliched charcher, don't try this command!!!!!
+
 # That is it!!!
 To know more, visit the wiki, and I explain each function
 """
 
-# IsaUtilities (or isau)
+# IsaUtilities (or isau) [2.0]
 # Lazy Imports (modules)
 __lazy_modules__ = ["sys", "colorama", "shutil", "os", "subprocess" "tempfile", "webbrownser", "pandas", "sqlalchemy", "pyodbc", "re", "urlib.parse"]
 
@@ -61,11 +63,12 @@ sys.dont_write_bytecode = True
 __author__ = "Isaac Martins Brito Sousa (IsaacLindo123 GitHub) <isaac.legalzim10@gmail.com>"
 
 # All functions in IsaUtilities (or isau)
-__all__ = ["colorinicialize", "terminaltitle", "sqlsender", "sqlconnectunencrypted", "sqlconnectencrypted", "sqlquery", "cmd", "vbs", "c", "cpp", "cs", "nodejs", "react", "css", "html", "ts", "ruby", "rust", "php", "lua", "r", "go", "nim", "java", "asm"]
+__all__ = ["colorinicialize", "terminaltitle", "sqlsender", "sqlconnectunencrypted", "sqlconnectencrypted", "sqlquery", "cmd", "batch", "vbs", "c", "cpp", "cs", "jswsh", "nodejs", "react", "css", "hta", "html", "ts", "ruby", "rust", "php", "lua", "r", "go", "nim", "java", "asm"]
 
 
 # Hello
-print("Hello form Two Points Community!!! IsaUtilities [1.0] (FIX IN PYPI 1) imported (obs: no run the colorinitialize() & react(appname, appcode) in module (F5))")
+if __name__ == "__main__":
+    print("Hello form Two Points Community!!! IsaUtilities [2.0] (FIX PRINT 2) imported (obs: no run the colorinitialize() & react(appname, appcode) in module (F5))")
 
 # Global variables
 _cfgconnect = None
@@ -138,6 +141,7 @@ def sqlquery(qry):
     except Exception as e:
         print(f"TBMRCL [Cod 005] Error in query: {e}")
 
+
 def cmd(command):
     result = subprocess.run(command, shell=True, capture_output=True, text=True, encoding="cp850")
     print(result.stdout)
@@ -145,6 +149,36 @@ def cmd(command):
     if result.stderr:
         print(f"TBMRCL [Cod: 010] Error in results \n{result.stderr}")
 
+def batch(batchcode):
+    batcd = f"{batchcode}"
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".bat", mode="w", encoding="utf-8") as f_bat:
+        f_bat.write(batcd)
+        batdir = f_bat.name
+
+    try:
+        result = subprocess.run(
+            ["cmd.exe", "/c", batdir],
+            capture_output=True,
+            text=True,
+            encoding="cp850",
+            errors="replace"
+        )
+        if result.stdout:
+            print(result.stdout)
+        if result.stderr:
+            print(f"TBMRCL [Cod 055] Execution Error in Batch:\n{result.stderr}")
+
+    except FileNotFoundError:
+        so = sys.platform
+        print(f"TBMRCL [Cod 056] 'cmd.exe' not found in your system, perhaps your system is not a Windows (SYSTEM:{so})")
+
+    except Exception as e:
+        print(f"TBMRCL [Cod UNKNW] Unexpected error: {e}")
+
+    finally:
+        if os.path.exists(batdir):
+            os.remove(batdir)
 
 def vbs(vbscommand):
     vbscode = f"""{vbscommand}"""
@@ -295,7 +329,38 @@ def cs(cscode):
 
             if os.path.exists(program_path):
                 os.remove(program_path)
-                
+
+def jswsh(jscode, use_wscript=False):
+    jscd = f"{jscode}"
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".js", mode="w", encoding="utf-8") as f_js:
+        f_js.write(jscd)
+        jsdir = f_js.name
+
+    host = "wscript.exe" if use_wscript else "cscript.exe"
+    cmd = [host, "//NoLogo", jsdir] if not use_wscript else [host, jsdir]
+
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, errors="replace")
+        if result.returncode != 0:
+            print(f"TBMRCL [Cod 057] Execution Error in WSH Java Script ({host}):")
+            if result.stderr:
+                print(result.stderr)
+        else:
+            if result.stdout:
+                print(result.stdout)
+
+    except FileNotFoundError:
+        so = sys.platform
+        print(f"TBMRCL [Cod 058] '{host}' not found in your system, perhaps your system is not a Windows (SYSTEM:{so})")
+
+    except Exception as e:
+        print(f"TBMRCL [Cod UNKNW] Unexpected error: {e}")
+
+    finally:
+        if os.path.exists(jsdir):
+            os.remove(jsdir)
+
 def nodejs(javascriptcode):
     jscd = f"""{javascriptcode}"""
 
@@ -362,6 +427,23 @@ def react(app_name="myreactproject"):
 
     except Exception as e:
         print(f"TBMRCL [Cod UNKNW] Unexcepted Error: {e}")
+
+def hta(htacode):
+    htacd = f"{htacode}"
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".hta", mode="w", encoding="utf-8") as f_hta:
+        f_hta.write(htacd)
+        htadir = f_hta.name
+
+    try:
+        subprocess.Popen(["mshta.exe", htadir])
+
+    except FileNotFoundError:
+        so = sys.platform
+        print(f"TBMRCL [Cod 059] 'mshta.exe' not found in your system, eprhaps your system is not a Windows (SYSTEM:{so})")
+
+    except Exception as e:
+        print(f"TBMRCL [Cod UNKNW] Unexpected error: {e}")
 
 def css(csscode):
     if csscode is None:
